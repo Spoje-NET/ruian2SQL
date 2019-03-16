@@ -1,0 +1,17 @@
+{
+    "name": "spoje.net/ruian2sql",
+    "description": "Nástroj pro import českých adresních míst do SQL databáze",
+    "authors": [
+        {
+            "name": "Vitex",
+            "email": "info@vitexsoftware.cz"
+        }
+    ],
+    "require": {
+        "robmorgan/phinx": "*",
+        "ext-iconv": "*"
+    },
+    "require-dev": {
+        "phing/phing": "*"
+    }
+}

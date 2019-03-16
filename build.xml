@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="ruian2sql" default="prepare">
+    <property file="./build.properties"/>
+    <!-- ============================================  -->
+    <!-- Target: prepare                               -->
+    <!-- ============================================  -->
+    <target name="prepare" depends="unpack">
+        <exec command="composer update" passthru="true" />
+        <exec command="./vendor/bin/phinx migrate" passthru="true" />
+        <exec command="./vendor/bin/phinx seed:run -s Places" passthru="true" />
+    </target>
+
+    <target name="download">
+        <echo msg="Making directory ./build" />
+        <mkdir dir="./build" />
+        <exec
+            command="wget -c ${url.places.source}${filename.places.archive} -O ./build/${filename.places.archive}"
+            passthru="true"
+        />
+    </target>    
+
+    <target name="unpack" depends="download">
+        <unzip file="build/${filename.places.archive}" todir="build">
+        </unzip>        
+    </target>
+    
+
+    <target name="clean">
+        <delete dir="build" includeemptydirs="true" verbose="true" failonerror="true" />
+        <delete dir="vendor" includeemptydirs="true" verbose="true" failonerror="true" />
+    </target>
+
+                                    
+                                                                                                            
+
+</project>
