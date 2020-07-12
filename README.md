@@ -3,6 +3,7 @@ ruian2SQL
 
 Nástroj pro import **adresních míst Státní správy zeměměřictví a katastru**  do SQL databáze
 
+[![time tracker](https://wakatime.com/badge/github/Spoje-NET/ruian2SQL.svg)](https://wakatime.com/badge/github/Spoje-NET/ruian2SQL)
 
 Požadavky
 ---------
