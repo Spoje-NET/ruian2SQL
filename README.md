@@ -15,7 +15,8 @@ Požadavky
 * [phinx](https://phinx.org/) - PHP Database Migrations For Everyone
 
 
-##Postup 
+Postup 
+======
 
 Nejprve je třeba si připravit databázi: 
 
