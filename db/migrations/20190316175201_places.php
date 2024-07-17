@@ -48,8 +48,10 @@ class Places extends AbstractMigration {
                 ->addIndex(['house_number'], ['name' => 'idx_house_number'])
                 ->addIndex(['orientation_number'], ['name' => 'idx_orientation_number'])
                 ->addIndex(['zip'], ['name' => 'idx_zip'])
-                ->addIndex(['x', 'y'], ['name' => 'gps'])
-                ->addIndex(['y', 'x'], ['name' => 'gps_reverse'])
+                ->addIndex(['x', 'y'], ['name' => 'sjstk'])
+                ->addIndex(['y', 'x'], ['name' => 'sjstk_reverse'])
+                ->addIndex(['long', 'lat'], ['name' => 'gps'])
+                ->addIndex(['lat', 'long'], ['name' => 'gps_reverse'])
                 ->create();
     }
 }
