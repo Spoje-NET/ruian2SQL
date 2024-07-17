@@ -3,6 +3,10 @@ ruian2SQL
 
 Nástroj pro import **adresních míst Státní správy zeměměřictví a katastru**  do SQL databáze
 
+[Formát vstupních dat](Adresni-mista-CSV_atributy.pdf?raw=true)
+
+(https://www.cuzk.cz/Uvod/Produkty-a-sluzby/RUIAN/2-Poskytovani-udaju-RUIAN-ISUI-VDP/Dopady-zmeny-zakona-c-51-2020-Sb/Adresni-mista-CSV_atributy.aspx)
+
 [![time tracker](https://wakatime.com/badge/github/Spoje-NET/ruian2SQL.svg)](https://wakatime.com/badge/github/Spoje-NET/ruian2SQL)
 
 Požadavky
