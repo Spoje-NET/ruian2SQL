@@ -97,3 +97,4 @@ ALTER TABLE `places`
 
 ```
 
+![PhpMyAdmin](phpmya.png?raw=true)
