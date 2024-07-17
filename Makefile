@@ -6,3 +6,7 @@ composer:
 
 phing:
 	vendor/bin/phing
+
+seed:
+	./vendor/bin/phinx seed:run -s Places
+
