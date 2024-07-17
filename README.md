@@ -68,38 +68,39 @@ Struktura Databáze
 
 ```sql
 CREATE TABLE `places` (
-  `id` int(11) NOT NULL,
-  `adm` int(11) UNSIGNED NOT NULL COMMENT 'Kód ADM',
-  `code` int(11) UNSIGNED NOT NULL COMMENT 'Kód obce',
-  `name` varchar(255) NOT NULL COMMENT 'Název obce',
-  `momc_code` int(11) UNSIGNED NOT NULL COMMENT 'Kód MOMC',
-  `momc_name` varchar(255) NOT NULL COMMENT 'Název MOMC',
-  `mop_code` int(11) UNSIGNED NOT NULL COMMENT 'Kód MOP',
-  `mop_name` varchar(255) NOT NULL COMMENT 'Název MOP',
-  `district_code` int(11) UNSIGNED NOT NULL COMMENT 'Kód části obce',
-  `district_name` varchar(255) NOT NULL COMMENT 'Název části obce',
-  `street_code` int(11) UNSIGNED NOT NULL COMMENT 'Kód ulice',
-  `street_name` varchar(255) NOT NULL COMMENT 'Název ulice',
-  `so_type` varchar(255) NOT NULL COMMENT 'Typ SO',
-  `house_number` int(11) UNSIGNED NOT NULL COMMENT 'Číslo domovní',
-  `orientation_number` int(11) UNSIGNED NOT NULL COMMENT 'Číslo orientační',
-  `orientation_number_mark` varchar(255) NOT NULL COMMENT 'Znak čísla orientačního',
-  `zip` varchar(5) NOT NULL COMMENT 'PSČ',
-  `y` decimal(10,0) UNSIGNED NOT NULL COMMENT 'Souřadnice Y',
-  `x` decimal(10,0) UNSIGNED NOT NULL COMMENT 'Souřadnice X',
-  `valid_from` datetime NOT NULL COMMENT 'Platí Od'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Adresní místa z celé ČR';
-
-ALTER TABLE `places`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `idx_adm` (`adm`),
-  ADD KEY `idx_code` (`code`),
-  ADD KEY `idx_name` (`name`),
-  ADD KEY `idx_stret_name` (`street_name`),
-  ADD KEY `idx_house_number` (`house_number`),
-  ADD KEY `idx_orientation_number` (`orientation_number`),
-  ADD KEY `idx_zip` (`zip`);
-
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `adm` int(11) unsigned DEFAULT NULL COMMENT 'Kód ADM',
+  `code` int(11) unsigned DEFAULT NULL COMMENT 'Kód obce',
+  `name` varchar(255) DEFAULT NULL COMMENT 'Název obce',
+  `momc_code` int(11) unsigned DEFAULT NULL COMMENT 'Kód MOMC',
+  `momc_name` varchar(255) DEFAULT NULL COMMENT 'Název MOMC',
+  `mop_code` int(11) unsigned DEFAULT NULL COMMENT 'Kód MOP',
+  `mop_name` varchar(255) DEFAULT NULL COMMENT 'Název MOP',
+  `district_code` int(11) unsigned DEFAULT NULL COMMENT 'Kód části obce',
+  `district_name` varchar(255) DEFAULT NULL COMMENT 'Název části obce',
+  `street_code` int(11) unsigned DEFAULT NULL COMMENT 'Kód ulice',
+  `street_name` varchar(255) DEFAULT NULL COMMENT 'Název ulice',
+  `so_type` varchar(255) DEFAULT NULL COMMENT 'Typ SO',
+  `house_number` int(11) unsigned DEFAULT NULL COMMENT 'Číslo domovní',
+  `orientation_number` int(11) unsigned DEFAULT NULL COMMENT 'Číslo orientační',
+  `orientation_number_mark` varchar(255) DEFAULT NULL COMMENT 'Znak čísla orientačního',
+  `zip` varchar(5) DEFAULT NULL COMMENT 'PSČ',
+  `y` float unsigned DEFAULT NULL COMMENT 'S-JTSK Souřadnice Y',
+  `x` float unsigned DEFAULT NULL COMMENT 'S-JTSK Souřadnice X',
+  `lat` decimal(30,10) unsigned DEFAULT NULL COMMENT 'WGS 84 Y',
+  `long` decimal(30,10) unsigned DEFAULT NULL COMMENT 'WGS 84 X',
+  `valid_from` datetime DEFAULT NULL COMMENT 'Platí Od',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `idx_adm` (`adm`),
+  KEY `idx_code` (`code`),
+  KEY `idx_name` (`name`),
+  KEY `idx_stret_name` (`street_name`),
+  KEY `idx_house_number` (`house_number`),
+  KEY `idx_orientation_number` (`orientation_number`),
+  KEY `idx_zip` (`zip`),
+  KEY `gps` (`x`,`y`),
+  KEY `gps_reverse` (`y`,`x`)
+) ENGINE=InnoDB AUTO_INCREMENT=2921780 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Adresní místa z celé ČR';
 ```
 
 ![PhpMyAdmin](phpmya.png?raw=true)
