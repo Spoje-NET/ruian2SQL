@@ -18,7 +18,7 @@ class Places extends AbstractSeed
      * More information on writing seeders is available here:
      * http://docs.phinx.org/en/latest/seeding.html
      */
-    public function run()
+    public function run(): void
     {
         $allFiles = scandir('build/CSV/');
         $posts    = $this->table('places');
@@ -34,24 +34,24 @@ class Places extends AbstractSeed
                         $offset = 0;
 
                         $data[] = [
-                            'adm' => $inputRow[$offset++],
-                            'code' => $inputRow[$offset++],
+                            'adm' => intval($inputRow[$offset++]),
+                            'code' => intval($inputRow[$offset++]),
                             'name' => $inputRow[$offset++],
-                            'momc_code' => $inputRow[$offset++],
+                            'momc_code' => intval($inputRow[$offset++]),
                             'momc_name' => $inputRow[$offset++],
-                            'mop_code' => $inputRow[$offset++],
+                            'mop_code' => intval($inputRow[$offset++]),
                             'mop_name' => $inputRow[$offset++],
                             'district_code' => $inputRow[$offset++],
                             'district_name' => $inputRow[$offset++],
-                            'street_code' => $inputRow[$offset++],
+                            'street_code' => intval($inputRow[$offset++]),
                             'street_name' => $inputRow[$offset++],
                             'so_type' => $inputRow[$offset++],
-                            'house_number' => $inputRow[$offset++],
-                            'orientation_number' => $inputRow[$offset++],
+                            'house_number' => intval($inputRow[$offset++]),
+                            'orientation_number' => intval($inputRow[$offset++]),
                             'orientation_number_mark' => $inputRow[$offset++],
                             'zip' => $inputRow[$offset++],
-                            'y' => $inputRow[$offset++],
-                            'x' => $inputRow[$offset++],
+                            'y' => floatval($inputRow[$offset++]),
+                            'x' => floatval($inputRow[$offset++]),
                         ];
 
                         echo '.';
@@ -59,7 +59,7 @@ class Places extends AbstractSeed
                 }
                 echo "\n";
                 $posts->insert($data)->save();
-                unset($data);
+                $data = [];
             }
         }
 

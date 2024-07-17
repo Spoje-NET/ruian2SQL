@@ -6,18 +6,28 @@
     <!-- Target: prepare                               -->
     <!-- ============================================  -->
     <target name="prepare" depends="unpack">
-        <exec command="composer update" passthru="true" />
-        <exec command="./vendor/bin/phinx migrate" passthru="true" />
-        <exec command="./vendor/bin/phinx seed:run -s Places" passthru="true" />
+        <exec executable="composer" passthru="true">
+            <arg value="update"/>
+        </exec>
+        <exec executable="./vendor/bin/phinx" passthru="true">
+            <arg value="migrate"/>
+        </exec>
+        <exec executable="./vendor/bin/phinx" passthru="true">
+            <arg value="seed:run"/>
+            <arg value="-s"/>
+            <arg value="Places"/>
+        </exec>
     </target>
 
     <target name="download">
         <echo msg="Making directory ./build" />
         <mkdir dir="./build" />
-        <exec
-            command="wget -c ${url.places.source}${filename.places.archive} -O ./build/${filename.places.archive}"
-            passthru="true"
-        />
+        <exec executable="wget" passthru="true">
+            <arg value="-c"/>
+            <arg value="${url.places.source}${filename.places.archive}"/>
+            <arg value="-O"/>
+            <arg value="./build/${filename.places.archive}"/>
+        </exec>
     </target>    
 
     <target name="unpack" depends="download">
