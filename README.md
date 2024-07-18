@@ -104,3 +104,21 @@ CREATE TABLE `places` (
 ```
 
 ![PhpMyAdmin](phpmya.png?raw=true)
+
+Příklad použití
+---------------
+
+Příklad funkce která vrátí nejbližší adresu od hledaných souřadnic:
+
+```php
+class Places extends \Ease\SQL\Engine {
+
+    public $myTable = 'places';
+
+    public function findClosestPlace($long, $lat) {
+        return $this->listingQuery()->disableSmartJoin()->select(new \Envms\FluentPDO\Literal('ROUND(3959 * ACOS(COS(RADIANS(' . $lat . ')) * COS(RADIANS(latitude)) * COS(RADIANS(longitude) - RADIANS(' . $long . ')) + SIN(RADIANS(' . $lat . ')) * SIN(RADIANS(latitude)))) AS distance'))->orderBy('distance')->limit(1);
+    }
+}
+```
+
+(Psáno s použitím https://github.com/VitexSoftware/php-ease-fluentpdo)
