@@ -144,11 +144,11 @@ class Places extends AbstractSeed {
 
                         if ($record['x'] != 0 && $record['y'] != 'y') {
                             $wgs84 = $this->tsktowgs84($record['x'], $record['y'], 200);
-                            $record['lat'] = $wgs84[0];
-                            $record['long'] = $wgs84[1];
+                            $record['latitude'] = $wgs84[0];
+                            $record['longitude'] = $wgs84[1];
                         } else {
-                            $record['lat'] = 0;
-                            $record['long'] = 0;
+                            $record['latitude'] = 0;
+                            $record['longitude'] = 0;
                         }
 
 //                        print_r($record);
